@@ -9,21 +9,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Base route
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
 });
 
-// Health check
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
-// Routes
+// Proper API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 
-// 404 handler
+// 404
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
